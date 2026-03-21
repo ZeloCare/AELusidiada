@@ -4,169 +4,297 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bênção de Finalistas - Académica Lusíada</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        // Palete de Cores Académica e Sofisticada
+                        "academic-blue": "#001B3D",
+                        "academic-gold": "#E9C349",
+                        "academic-gold-dim": "#ffe087",
+                        "surface": "#faf9fc",
+                        "surface-low": "#f5f3f6",
+                        "surface-lowest": "#ffffff",
+                        "on-surface": "#1b1b1e",
+                        "on-surface-variant": "#44474e",
+                        "primary-container": "#001b3d",
+                        "on-primary": "#ffffff",
+                        "secondary": "#735c00",
+                        "outline-variant": "#c4c6cf"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif", "serif"], // Para Títulos Formais
+                        "body": ["Manrope", "sans-serif"],    // Para Texto Normal
+                        "label": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Efeito de sobreposição académica elegante para imagens */
+        .bg-academic-overlay {
+            background: linear-gradient(to bottom, rgba(0, 27, 61, 0.85), rgba(0, 27, 61, 0.98));
+        }
+        /* Efeito de Vidro Fosco (Glassmorphism) para cartões */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px border-white/5;
+        }
+        /* Garantir scroll suave ao clicar nos links do menu */
+        html {
             scroll-behavior: smooth;
         }
-        .bg-hero {
-            /* Fundo escuro com gradiente elegante */
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        /* --- ESTILOS PARA O ACORDEÃO DAS FAQs (PURE CSS) --- */
+        /* Esconder o input checkbox */
+        .accordion-input {
+            display: none;
+        }
+        /* Esconder a resposta por defeito */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding-left: 2rem; /* px-8 */
+            padding-right: 2rem; /* px-8 */
+        }
+        /* Quando o checkbox estiver selecionado, mostrar a resposta */
+        .accordion-input:checked ~ .accordion-content {
+            max-height: 500px; /* Definir uma altura máxima grande o suficiente */
+            padding-bottom: 2rem; /* pb-8 */
+        }
+        /* Rodar o ícone '+' para 'x' quando aberto */
+        .accordion-input:checked ~ label .material-symbols-outlined {
+            transform: rotate(45deg);
+            color: #ba1a1a; /* Cor de destaque ao fechar */
+        }
+        .accordion-label .material-symbols-outlined {
+            transition: transform 0.3s ease, color 0.3s ease;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-surface font-body text-on-surface">
 
-    <header class="bg-hero text-white py-20 px-4 sm:px-6 lg:px-8 text-center shadow-lg">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight text-yellow-400">
-                Bênção de Finalistas
-            </h1>
-            <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-gray-200">
-                Parabéns, Finalista!
-            </h2>
-            <p class="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-                Foram anos de esforço, noitadas de estudo e memórias para a vida. <br class="hidden sm:block">
-                Chegou o momento de agradecer e celebrar o fim desta caminhada.
-            </p>
-            
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" 
-               target="_blank" 
-               class="inline-block bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold text-lg py-4 px-10 rounded-full shadow-xl transition transform hover:scale-105 duration-300">
-                <i class="fas fa-ticket-alt mr-2"></i> Faz já a tua inscrição
+    <nav class="fixed top-0 w-full z-50 bg-academic-blue/90 backdrop-blur-sm border-b border-white/10 shadow-xl shadow-academic-blue/10">
+        <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
+            <div class="text-xl md:text-2xl font-headline font-bold text-academic-gold tracking-tight">
+                Académica Lusíada
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="text-academic-gold border-b-2 border-academic-gold pb-1 font-body font-medium tracking-wide text-sm" href="#hero">Início</a>
+                <a class="text-white/80 hover:text-white transition-colors font-body tracking-wide text-sm" href="#pulseiras">Logística</a>
+                <a class="text-white/80 hover:text-white transition-colors font-body tracking-wide text-sm" href="#faq">FAQ</a>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" target="_blank" class="bg-academic-gold text-academic-blue px-6 py-2.5 rounded-full font-body font-bold tracking-wide text-xs transition-all hover:brightness-110 active:scale-95 shadow-md">
+                Inscreve-te
             </a>
-            
-            <p class="mt-6 text-sm text-gray-400">
-                Inscrições abertas até <span class="font-bold text-yellow-500">30 de Abril</span>.
-            </p>
         </div>
-    </header>
+    </nav>
 
-    <section class="max-w-4xl mx-auto mt-12 px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-2xl shadow-md p-8 sm:p-10 border-t-4 border-yellow-500">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-                <div class="text-center md:text-left">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-900">Levantamento de Pulseiras</h3>
-                    <p class="text-gray-600">
-                        Após preencheres o formulário, dirige-te à <strong>Sala da Associação</strong> para efetuar o pagamento.
-                    </p>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-xl min-w-[250px]">
-                    <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-                        <i class="far fa-clock text-yellow-600"></i> Horários de Pagamento
-                    </h4>
-                    <ul class="text-sm text-gray-700 space-y-2">
-                        <li><strong>Segunda a Quarta:</strong> 14h00 - 16h00</li>
-                        <li><strong>Quinta-feira:</strong> 14h00 - 16h00</li>
-                    </ul>
+    <main>
+        <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-primary-container">
+            <div class="absolute inset-0 z-0">
+                <img class="w-full h-full object-cover opacity-30" alt="Arquitetura universitária elegante" src="https://images.unsplash.com/photo-1541339907198-e08756defefe?q=80&w=1920&auto=format&fit=crop"/>
+                <div class="absolute inset-0 bg-academic-overlay"></div>
+            </div>
+            <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-8 text-center py-16">
+                <h1 class="font-headline text-5xl md:text-7xl text-academic-gold-dim mb-8 leading-tight tracking-tight">
+                    Bênção de Finalistas
+                </h1>
+                <p class="font-body text-xl md:text-2xl text-on-primary max-w-3xl mx-auto mb-16 font-light leading-relaxed tracking-wide">
+                    Parabéns, Finalista! <br class="hidden sm:block"> Foram anos de esforço, noitadas de estudo e memórias para a vida. Celebra este momento histórico com a tua família e colegas.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" target="_blank" class="inline-flex items-center gap-3 bg-academic-gold text-academic-blue px-12 py-5 rounded-full text-sm font-bold uppercase tracking-[0.15em] transition-all hover:brightness-110 active:scale-95 shadow-2xl shadow-academic-gold/20">
+                        Faz já a tua inscrição
+                    </a>
+                    <a href="#pulseiras" class="inline-flex items-center gap-2 border border-white/20 text-white px-10 py-5 rounded-full text-sm font-bold uppercase tracking-[0.15em] hover:bg-white/5 transition-all group">
+                        Saber mais
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-y-1">expand_more</span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="max-w-4xl mx-auto my-16 px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-10 text-gray-900">Perguntas Frequentes</h2>
-        
-        <div class="space-y-4">
-            
-            <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-6 [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex cursor-pointer items-center justify-between gap-1.5 font-semibold text-gray-900">
-                    Posso levar mais do que 4 convidados?
-                    <span class="relative size-5 shrink-0">
-                        <svg class="size-5 transition duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </span>
-                </summary>
-                <p class="mt-4 leading-relaxed text-gray-700">
-                    Não. O limite está estritamente fixado em <strong>4 convidados por Finalista</strong>, de forma a garantir que todos os finalistas possam ter os familiares presentes.
-                </p>
-            </details>
+        <section class="bg-primary-container py-16 px-6 md:px-8 relative overflow-hidden border-t border-white/5">
+            <div class="max-w-7xl mx-auto text-center">
+                <h3 class="font-label text-academic-gold-dim text-xs font-bold uppercase tracking-[0.3em] mb-12">Contagem Decrescente para a Cerimónia</h3>
+                <div class="flex flex-wrap justify-center items-center gap-6 md:gap-16">
+                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">14</span>
+                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Dias</span>
+                    </div>
+                    <div class="h-16 w-px bg-white/10 hidden md:block"></div>
+                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">08</span>
+                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Horas</span>
+                    </div>
+                    <div class="h-16 w-px bg-white/10 hidden md:block"></div>
+                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">45</span>
+                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Minutos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-6 [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex cursor-pointer items-center justify-between gap-1.5 font-semibold text-gray-900">
-                    Como posso realizar o pagamento e confirmar a minha presença?
-                    <span class="relative size-5 shrink-0">
-                        <svg class="size-5 transition duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </span>
-                </summary>
-                <p class="mt-4 leading-relaxed text-gray-700">
-                    Após preencheres o formulário online, deverás dirigir-te à <strong>Sala da Associação</strong> para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
-                </p>
-            </details>
+        <section class="py-24 md:py-32 px-6 md:px-8 bg-surface" id="pulseiras">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+                <div class="space-y-8">
+                    <span class="font-label text-secondary text-xs font-bold uppercase tracking-[0.2em]">Logística Obrigatória</span>
+                    <h2 class="font-headline text-4xl md:text-5xl text-primary-container leading-tight tracking-tight">Levantamento de Pulseiras e Acessos</h2>
+                    <p class="text-on-surface-variant text-lg leading-relaxed font-light">
+                        Após preencheres o formulário online, deves dirigir-te à Sala da Associação para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
+                    </p>
+                    <div class="flex items-start gap-4 p-6 bg-surface-low rounded-xl border-l-4 border-academic-gold transition-all hover:shadow-lg">
+                        <span class="material-symbols-outlined text-academic-gold text-3xl" style="font-variation-settings: 'FILL' 1;">info</span>
+                        <div>
+                            <p class="text-sm font-semibold text-primary-container">Atenção!</p>
+                            <p class="text-sm text-on-surface-variant leading-relaxed">Não te esqueças de apresentar o comprovativo de inscrição e o teu cartão de estudante.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-surface-lowest p-10 rounded-3xl shadow-2xl shadow-primary-container/5 relative border border-gray-100">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-academic-gold-dim/10 rounded-full -mr-10 -mt-10"></div>
+                    <div class="relative space-y-10">
+                        <div class="border-b border-outline-variant/30 pb-6">
+                            <h4 class="font-headline text-xl text-primary-container mb-4">Horários de Pagamento</h4>
+                            <div class="flex justify-between items-center group py-2">
+                                <span class="text-on-surface-variant font-medium">Segunda a Quarta</span>
+                                <span class="bg-academic-blue text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-md">14h00 - 16h00</span>
+                            </div>
+                        </div>
+                        <div class="border-b border-outline-variant/30 pb-6">
+                            <div class="flex justify-between items-center group py-2">
+                                <span class="text-on-surface-variant font-medium">Quinta-feira</span>
+                                <span class="bg-academic-blue text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-md">14h00 - 16h00</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 text-primary-container pt-4">
+                            <span class="material-symbols-outlined text-academic-gold text-3xl">location_on</span>
+                            <span class="font-bold uppercase text-xs tracking-widest">Sala da Associação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-6 [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex cursor-pointer items-center justify-between gap-1.5 font-semibold text-gray-900">
-                    Inscrição sem convidados é necessária?
-                    <span class="relative size-5 shrink-0">
-                        <svg class="size-5 transition duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </span>
-                </summary>
-                <p class="mt-4 leading-relaxed text-gray-700">
-                    <strong>Sim.</strong> Todos os Finalistas devem estar registados no formulário.
-                </p>
-            </details>
+        <section class="py-24 md:py-32 px-6 md:px-8 bg-surface-low" id="faq">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-20">
+                    <span class="font-label text-secondary text-xs font-bold uppercase tracking-[0.2em]">Dúvidas</span>
+                    <h2 class="font-headline text-4xl md:text-5xl text-primary-container mt-4 leading-tight tracking-tight">Perguntas Frequentes</h2>
+                </div>
+                
+                <div class="space-y-5">
+                    
+                    <div class="accordion-item bg-surface-lowest rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <input type="checkbox" id="faq-1" class="accordion-input">
+                        <label for="faq-1" class="accordion-label w-full px-8 py-6 text-left flex justify-between items-center cursor-pointer hover:bg-white/50 transition-colors">
+                            <span class="font-headline text-lg text-primary-container pr-4">Posso levar mais do que 4 convidados?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl">add</span>
+                        </label>
+                        <div class="accordion-content text-on-surface-variant leading-relaxed font-light">
+                            Não. O limite está estritamente fixado em **4 convidados por Finalista**, de forma a garantir que todos os finalistas possam ter os familiares presentes.
+                        </div>
+                    </div>
 
-            <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-6 [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex cursor-pointer items-center justify-between gap-1.5 font-semibold text-gray-900">
-                    Posso participar no evento sem inscrição prévia?
-                    <span class="relative size-5 shrink-0">
-                        <svg class="size-5 transition duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </span>
-                </summary>
-                <p class="mt-4 leading-relaxed text-gray-700">
-                    <strong>Não.</strong> Por motivos de segurança e controlo de lotação, apenas os Finalistas e convidados registados no formulário e com pagamento validado terão acesso ao recinto da Bênção.
-                </p>
-            </details>
+                    <div class="accordion-item bg-surface-lowest rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <input type="checkbox" id="faq-2" class="accordion-input">
+                        <label for="faq-2" class="accordion-label w-full px-8 py-6 text-left flex justify-between items-center cursor-pointer hover:bg-white/50 transition-colors">
+                            <span class="font-headline text-lg text-primary-container pr-4">Como posso realizar o pagamento e confirmar a minha presença?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl">add</span>
+                        </label>
+                        <div class="accordion-content text-on-surface-variant leading-relaxed font-light">
+                            Após preencheres o formulário online, deverás dirigir-te à **Sala da Associação** para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
+                        </div>
+                    </div>
 
-            <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-6 [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex cursor-pointer items-center justify-between gap-1.5 font-semibold text-gray-900">
-                    Qual é o prazo limite para a inscrição e pagamento?
-                    <span class="relative size-5 shrink-0">
-                        <svg class="size-5 transition duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </span>
-                </summary>
-                <p class="mt-4 leading-relaxed text-gray-700">
-                    O formulário e o respetivo pagamento na Sala da Associação devem ser concluídos até ao dia <strong>30 de Abril</strong>. Após esta data, não haverá qualquer venda de pulseiras ou abertura de novas inscrições, sem exceções.
-                </p>
-            </details>
+                    <div class="accordion-item bg-surface-lowest rounded-xl shadow-lg border-2 border-academic-gold/30 overflow-hidden">
+                        <input type="checkbox" id="faq-3" class="accordion-input" checked> <label for="faq-3" class="accordion-label w-full px-8 py-6 text-left flex justify-between items-center cursor-pointer bg-academic-gold/5 hover:bg-academic-gold/10 transition-colors">
+                            <span class="font-headline text-lg text-primary-container pr-4">Inscrição sem convidados é necessária?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl">add</span>
+                        </label>
+                        <div class="accordion-content text-on-surface-variant leading-relaxed font-light">
+                            **Sim.** Todos os **Finalistas** devem estar registados no formulário, mesmo que não levem convidados.
+                        </div>
+                    </div>
 
-            <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-6 [&_summary::-webkit-details-marker]:hidden">
-                <summary class="flex cursor-pointer items-center justify-between gap-1.5 font-semibold text-gray-900">
-                    As crianças pagam bilhete?
-                    <span class="relative size-5 shrink-0">
-                        <svg class="size-5 transition duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </span>
-                </summary>
-                <p class="mt-4 leading-relaxed text-gray-700">
-                    <strong>Crianças até aos 10 anos têm entrada gratuita</strong> e não precisas de as incluir no teu formulário de inscrição.
-                </p>
-            </details>
-        </div>
-    </section>
+                    <div class="accordion-item bg-surface-lowest rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <input type="checkbox" id="faq-4" class="accordion-input">
+                        <label for="faq-4" class="accordion-label w-full px-8 py-6 text-left flex justify-between items-center cursor-pointer hover:bg-white/50 transition-colors">
+                            <span class="font-headline text-lg text-primary-container pr-4">Posso participar no evento sem inscrição prévia?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl">add</span>
+                        </label>
+                        <div class="accordion-content text-on-surface-variant leading-relaxed font-light">
+                            **Não.** Por motivos de segurança e controlo de lotação, apenas os **Finalistas** e convidados registados no formulário e com pagamento validado terão acesso ao recinto da Bênção.
+                        </div>
+                    </div>
 
-    <footer class="bg-gray-900 text-white py-10 text-center mt-12">
-        <div class="max-w-4xl mx-auto px-4">
-            <p class="mb-4 text-gray-300">Qualquer dúvida que tenhas, entra em contacto connosco:</p>
-            <a href="https://instagram.com/ACADEMICALUSIADA" target="_blank" class="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-bold text-xl transition">
-                <i class="fab fa-instagram text-2xl"></i> @ACADEMICALUSIADA
-            </a>
-            <p class="mt-10 text-sm text-gray-500">
-                &copy; 2024 Académica Lusíada. Todos os direitos reservados.
+                    <div class="accordion-item bg-surface-lowest rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <input type="checkbox" id="faq-5" class="accordion-input">
+                        <label for="faq-5" class="accordion-label w-full px-8 py-6 text-left flex justify-between items-center cursor-pointer hover:bg-white/50 transition-colors">
+                            <span class="font-headline text-lg text-primary-container pr-4">Qual é o prazo limite para a inscrição e pagamento?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl">add</span>
+                        </label>
+                        <div class="accordion-content text-on-surface-variant leading-relaxed font-light">
+                            O formulário e o respetivo pagamento na Sala da Associação devem ser concluídos até ao dia **30 de Abril**. Após esta data, não haverá qualquer venda de pulseiras ou abertura de novas inscrições, sem exceções.
+                        </div>
+                    </div>
+
+                    <div class="accordion-item bg-surface-lowest rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <input type="checkbox" id="faq-6" class="accordion-input">
+                        <label for="faq-6" class="accordion-label w-full px-8 py-6 text-left flex justify-between items-center cursor-pointer hover:bg-white/50 transition-colors">
+                            <span class="font-headline text-lg text-primary-container pr-4">As crianças pagam bilhete?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl">add</span>
+                        </label>
+                        <div class="accordion-content text-on-surface-variant leading-relaxed font-light">
+                            **Crianças até aos 10 anos têm entrada gratuita** e não precisas de as incluir no teu formulário de inscrição.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 md:px-8 bg-primary-container text-white text-center border-t border-white/5">
+            <div class="max-w-7xl mx-auto flex flex-col items-center gap-12">
+                <div class="space-y-6">
+                    <h3 class="font-headline text-3xl md:text-4xl text-academic-gold-dim leading-tight">Acompanha as novidades</h3>
+                    <p class="font-body text-white/70 max-w-xl mx-auto font-light leading-relaxed">Qualquer dúvida que tenhas entra em contacto connosco. Segue o nosso Instagram para informações em tempo real e fotografias do evento.</p>
+                    <a class="inline-flex items-center gap-3 text-academic-gold-dim border border-academic-gold-dim/30 px-8 py-4 rounded-full font-bold uppercase text-xs tracking-[0.2em] transition-all hover:bg-academic-gold-dim hover:text-academic-blue shadow-lg" href="https://instagram.com/ACADEMICALUSIADA" target="_blank">
+                        <i class="fab fa-instagram text-xl"></i> <span>@ACADEMICALUSIADA</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-academic-blue w-full py-16 px-6 md:px-8 border-t border-white/5">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto text-center md:text-left">
+            <div class="text-xl font-headline font-bold italic text-academic-gold">
+                Académica Lusíada
+            </div>
+            <p class="font-body text-sm text-white/50 max-w-md">
+                © 2024 Académica Lusíada. Todos os direitos reservados. Design melhorado com tecnologia mobile-first.
             </p>
+            <div class="flex gap-6">
+                <a class="text-white/50 hover:text-academic-gold transition-colors text-xs uppercase tracking-widest" href="#hero">Início</a>
+                <a class="text-white/50 hover:text-academic-gold transition-colors text-xs uppercase tracking-widest" href="#pulseiras">Logística</a>
+                <a class="text-white/50 hover:text-academic-gold transition-colors text-xs uppercase tracking-widest" href="#faq">FAQ</a>
+            </div>
         </div>
     </footer>
 
