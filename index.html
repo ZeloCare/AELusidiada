@@ -1,270 +1,331 @@
 <!DOCTYPE html>
-
-<html lang="pt"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Bênção de Finalistas - Académica Lusíada</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "secondary-fixed": "#ffe087",
-              "on-primary-fixed": "#001b3d",
-              "tertiary-fixed": "#ffdbcd",
-              "surface-bright": "#faf9fc",
-              "primary-fixed": "#d6e3ff",
-              "on-secondary-fixed-variant": "#574500",
-              "tertiary": "#000000",
-              "inverse-on-surface": "#f2f0f3",
-              "surface-container-highest": "#e3e2e5",
-              "surface-variant": "#e3e2e5",
-              "on-tertiary-fixed-variant": "#6b3a24",
-              "on-primary": "#ffffff",
-              "on-error": "#ffffff",
-              "on-background": "#1b1b1e",
-              "primary": "#000000",
-              "on-primary-container": "#6f84ac",
-              "secondary-fixed-dim": "#e9c349",
-              "background": "#faf9fc",
-              "surface-tint": "#495f84",
-              "primary-container": "#001b3d",
-              "inverse-primary": "#b1c7f2",
-              "error": "#ba1a1a",
-              "outline": "#74777f",
-              "on-tertiary-container": "#b2755b",
-              "surface-container-lowest": "#ffffff",
-              "on-surface": "#1b1b1e",
-              "on-secondary-fixed": "#231a00",
-              "surface-dim": "#dbd9dd",
-              "on-surface-variant": "#44474e",
-              "inverse-surface": "#303033",
-              "surface": "#faf9fc",
-              "tertiary-fixed-dim": "#fdb698",
-              "primary-fixed-dim": "#b1c7f2",
-              "on-secondary": "#ffffff",
-              "error-container": "#ffdad6",
-              "on-error-container": "#93000a",
-              "secondary-container": "#fed65a",
-              "surface-container": "#efedf1",
-              "surface-container-low": "#f5f3f6",
-              "surface-container-high": "#e9e7eb",
-              "tertiary-container": "#351001",
-              "on-tertiary-fixed": "#351001",
-              "on-primary-fixed-variant": "#31476b",
-              "on-tertiary": "#ffffff",
-              "on-secondary-container": "#745c00",
-              "secondary": "#735c00",
-              "outline-variant": "#c4c6cf"
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bênção de Finalistas - Académica Lusíada</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        // Configuração de Tailwind Replicada Exatamente
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#ffe087",
+                        "on-primary-fixed": "#001b3d",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-bright": "#faf9fc",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary-fixed-variant": "#574500",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#f2f0f3",
+                        "surface-container-highest": "#e3e2e5",
+                        "surface-variant": "#e3e2e5",
+                        "on-tertiary-fixed-variant": "#6b3a24",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1b1e",
+                        "primary": "#000000",
+                        "on-primary-container": "#6f84ac",
+                        "secondary-fixed-dim": "#e9c349",
+                        "background": "#faf9fc",
+                        "surface-tint": "#495f84",
+                        "primary-container": "#001b3d",
+                        "inverse-primary": "#b1c7f2",
+                        "error": "#ba1a1a",
+                        "outline": "#74777f",
+                        "on-tertiary-container": "#b2755b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1b1e",
+                        "on-secondary-fixed": "#231a00",
+                        "surface-dim": "#dbd9dd",
+                        "on-surface-variant": "#44474e",
+                        "inverse-surface": "#303033",
+                        "surface": "#faf9fc",
+                        "tertiary-fixed-dim": "#fdb698",
+                        "primary-fixed-dim": "#b1c7f2",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fed65a",
+                        "surface-container": "#efedf1",
+                        "surface-container-low": "#f5f3f6",
+                        "surface-container-high": "#e9e7eb",
+                        "tertiary-container": "#351001",
+                        "on-tertiary-fixed": "#351001",
+                        "on-primary-fixed-variant": "#31476b",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#745c00",
+                        "secondary": "#735c00",
+                        "outline-variant": "#c4c6cf"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif", "serif"], // Títulos Formais
+                        "body": ["Manrope", "sans-serif"],    // Texto Normal
+                        "label": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
             },
-            fontFamily: {
-              "headline": ["Noto Serif"],
-              "body": ["Manrope"],
-              "label": ["Manrope"]
-            },
-            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-          },
-        },
-      }
+        }
     </script>
-<style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      }
-      .bg-academic-overlay {
-        background: linear-gradient(to bottom, rgba(0, 27, 61, 0.85), rgba(0, 27, 61, 0.95));
-      }
-      .glass-card {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(12px);
-      }
+    <style>
+        /* Estilos CSS Replicados Exatamente */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-academic-overlay {
+            background: linear-gradient(to bottom, rgba(0, 27, 61, 0.85), rgba(0, 27, 61, 0.95));
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+        }
+        /* Garantir scroll suave ao clicar nos links do menu */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body class="bg-surface font-body text-on-surface">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#001B3D] dark:bg-[#001B3D] backdrop-blur-md bg-opacity-80 border-b border-white/10 shadow-xl shadow-[#001B3D]/20">
-<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-<div class="text-xl font-serif font-bold text-[#E9C349] tracking-tight">
+
+    <nav class="fixed top-0 w-full z-50 bg-[#001B3D] backdrop-blur-md bg-opacity-80 border-b border-white/10 shadow-xl shadow-[#001B3D]/20">
+        <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
+            <div class="text-xl md:text-2xl font-serif font-bold text-[#E9C349] tracking-tight">
                 Académica Lusíada
             </div>
-<div class="hidden md:flex items-center space-x-8">
-<a class="text-[#E9C349] border-b-2 border-[#E9C349] pb-1 font-sans Manrope tracking-wide uppercase text-xs" href="#">Início</a>
-<a class="text-white/80 hover:text-white transition-colors font-sans Manrope tracking-wide uppercase text-xs" href="#cerimonia">Cerimónia</a>
-<a class="text-white/80 hover:text-white transition-colors font-sans Manrope tracking-wide uppercase text-xs" href="#pulseiras">Inscrição</a>
-<a class="text-white/80 hover:text-white transition-colors font-sans Manrope tracking-wide uppercase text-xs" href="#faq">FAQ</a>
-</div>
-<a class="bg-[#E9C349] text-[#231a00] px-6 py-2 font-sans Manrope font-bold tracking-wide uppercase text-xs transition-transform active:scale-90" href="#">
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="text-[#E9C349] border-b-2 border-[#E9C349] pb-1 font-sans tracking-wide uppercase text-xs" href="#hero">Início</a>
+                <a class="text-white/80 hover:text-white transition-colors font-sans tracking-wide uppercase text-xs" href="#pulseiras">Logística</a>
+                <a class="text-white/80 hover:text-white transition-colors font-sans tracking-wide uppercase text-xs" href="#faq">FAQ</a>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" target="_blank" class="bg-[#E9C349] text-[#231a00] px-6 py-2.5 rounded-full font-sans font-bold tracking-wide uppercase text-xs transition-transform active:scale-90">
                 Inscreve-te
             </a>
-</div>
-</nav>
-<main>
-<!-- Hero Section -->
-<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-primary-container">
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover opacity-40" data-alt="University campus architecture in elegant blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUDbQUWE4gOctmgD0yqa0Uless68n7l4V07gYOvda2UsvWeQAao9pyUDGECfLdrWcPs5G2_rv4k-UTDlk3TeTE1cxOLzrLd7PSMiANO2uoK3Rw5URCp31p4unZIoFWa3aueewUiPG96NNh1TTO5X_j1Pm-L4iRKEHxQV-qhj7lyCtRVFEayYT19TGoeozCi5PzAE1SYIhyPY4KedmSX5Y12VTL_7iGGLyLWi3Czt2BOvoBCz-DeS5qHb3F8HXUMK2agU255si_Nl4"/>
-<div class="absolute inset-0 bg-academic-overlay"></div>
-</div>
-<div class="relative z-10 max-w-5xl mx-auto px-8 text-center">
-<div class="mb-8 flex justify-center">
-<img class="h-32 md:h-40" data-alt="Académica Lusíada Logo in gold" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIyOK35vTrJbJqom3sLbNhxb2FFgsUcxKC1_ykSiNoFsTdFZS2HNVHfglmdK5JQMmqqlOyOgfuNSzW9gKRoX_VDjpzzwBQR_2phCV-Bh0vxOeTXqao1MGaoS9yGFA-pCIpUKP8EzTEwsIqc6UgrBNZtCKgQ7So2Cqf9PYOL-68yTQuDO9j27z3TnzbkHFvS87ch28xUXOFl-w47R-Ia3rdZYMnFTCKJFotzm0FEA_35BgVN1Srw9HbGs_PaoUotKn5VRD08ybcVAc"/>
-</div>
-<h1 class="font-headline text-5xl md:text-7xl text-secondary-fixed-dim mb-6 leading-tight">
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-primary-container">
+            <div class="absolute inset-0 z-0">
+                <img class="w-full h-full object-cover opacity-30" alt="Arquitetura universitária elegante" src="https://images.unsplash.com/photo-1541339907198-e08756defefe?q=80&w=1920&auto=format&fit=crop"/>
+                <div class="absolute inset-0 bg-academic-overlay"></div>
+            </div>
+            <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-8 text-center py-16">
+                <div class="mb-12 flex justify-center">
+                    <img class="h-32 md:h-40" alt="Logo Académica Lusíada em ouro" src="https://raw.githubusercontent.com/ZeloCare/AELusidiada/main/public/logo-gold.png"/>
+                    </div>
+                <h1 class="font-headline text-5xl md:text-7xl text-secondary-fixed-dim mb-8 leading-tight tracking-tight">
                     Bênção de Finalistas
                 </h1>
-<p class="font-body text-xl md:text-2xl text-on-primary max-w-2xl mx-auto mb-12 font-light tracking-wide">
-                    Parabéns, Finalista! Uma nova etapa começa. Celebra este momento histórico com a tua família e colegas.
+                <p class="font-body text-xl md:text-2xl text-on-primary max-w-3xl mx-auto mb-16 font-light leading-relaxed tracking-wide">
+                    Parabéns, Finalista! <br class="hidden sm:block"> Foram anos de esforço, noitadas de estudo e memórias para a vida. Celebra este momento histórico com a tua família e colegas.
                 </p>
-<div class="flex flex-col md:flex-row gap-6 justify-center">
-<button class="bg-secondary-fixed-dim text-on-secondary-fixed px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] transition-all hover:brightness-110 active:scale-95">
+                <div class="flex flex-col md:flex-row gap-6 justify-center">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" target="_blank" class="bg-secondary-fixed-dim text-on-secondary-fixed px-12 py-5 rounded-full text-sm font-bold uppercase tracking-[0.2em] transition-all hover:brightness-110 active:scale-95 shadow-2xl shadow-secondary-fixed-dim/20">
                         Faz já a tua inscrição
-                    </button>
-<button class="border border-white/20 text-white px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] hover:bg-white/5 transition-all">
+                    </a>
+                    <a href="#pulseiras" class="border border-white/20 text-white px-10 py-5 rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-white/5 transition-all">
                         Saber mais
-                    </button>
-</div>
-</div>
-<div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 animate-bounce">
-<span class="material-symbols-outlined" style="font-size: 32px;">expand_more</span>
-</div>
-</section>
-<!-- Ceremonial Countdown - Signature Component -->
-<section class="bg-primary-container py-20 px-8 relative overflow-hidden">
-<div class="max-w-7xl mx-auto text-center">
-<h3 class="font-label text-secondary-fixed-dim text-xs uppercase tracking-[0.3em] mb-12">Contagem Decrescente</h3>
-<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-<div class="text-center">
-<span class="block font-headline text-6xl md:text-8xl text-white mb-2">14</span>
-<span class="font-label text-white/40 text-xs uppercase tracking-widest">Dias</span>
-</div>
-<div class="h-16 w-px bg-white/10 hidden md:block"></div>
-<div class="text-center">
-<span class="block font-headline text-6xl md:text-8xl text-white mb-2">08</span>
-<span class="font-label text-white/40 text-xs uppercase tracking-widest">Horas</span>
-</div>
-<div class="h-16 w-px bg-white/10 hidden md:block"></div>
-<div class="text-center">
-<span class="block font-headline text-6xl md:text-8xl text-white mb-2">45</span>
-<span class="font-label text-white/40 text-xs uppercase tracking-widest">Minutos</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Levantamento de Pulseiras -->
-<section class="py-32 px-8 bg-surface" id="pulseiras">
-<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-<div class="space-y-8">
-<span class="font-label text-secondary text-xs font-bold uppercase tracking-[0.2em]">Logística</span>
-<h2 class="font-headline text-4xl md:text-5xl text-primary-container leading-tight">Levantamento de Pulseiras e Acessos</h2>
-<p class="text-on-surface-variant text-lg leading-relaxed">
-                        Para garantir o teu lugar e dos teus convidados, o levantamento das pulseiras é obrigatório. Dirige-te à Sala da Associação nos horários indicados.
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 animate-bounce">
+                <span class="material-symbols-outlined" style="font-size: 32px;">expand_more</span>
+            </div>
+        </section>
+
+        <section class="bg-primary-container py-16 px-6 md:px-8 relative overflow-hidden border-t border-white/5">
+            <div class="max-w-7xl mx-auto text-center">
+                <h3 class="font-label text-secondary-fixed-dim text-xs font-bold uppercase tracking-[0.3em] mb-12">Contagem Decrescente para a Cerimónia</h3>
+                <div class="flex flex-wrap justify-center items-center gap-6 md:gap-16">
+                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">14</span>
+                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Dias</span>
+                    </div>
+                    <div class="h-16 w-px bg-white/10 hidden md:block"></div>
+                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">08</span>
+                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Horas</span>
+                    </div>
+                    <div class="h-16 w-px bg-white/10 hidden md:block"></div>
+                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">45</span>
+                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Minutos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 md:py-32 px-6 md:px-8 bg-surface" id="pulseiras">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+                <div class="space-y-8">
+                    <span class="font-label text-secondary text-xs font-bold uppercase tracking-[0.2em]">Logística Obrigatória</span>
+                    <h2 class="font-headline text-4xl md:text-5xl text-primary-container leading-tight tracking-tight">Levantamento de Pulseiras e Acessos</h2>
+                    <p class="text-on-surface-variant text-lg leading-relaxed font-light">
+                        Após preencheres o formulário online, deves dirigir-te à Sala da Associação para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
                     </p>
-<div class="flex items-start gap-4 p-6 bg-surface-container-low border-l-4 border-secondary-fixed-dim">
-<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">info</span>
-<p class="text-sm font-medium text-on-surface-variant">
-                            É necessário apresentar o comprovativo de inscrição e o cartão de estudante.
-                        </p>
-</div>
-</div>
-<div class="bg-surface-container-lowest p-10 shadow-2xl shadow-primary-container/5 relative">
-<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed-dim/5 -mr-8 -mt-8"></div>
-<div class="relative space-y-10">
-<div class="border-b border-outline-variant/30 pb-6">
-<h4 class="font-headline text-xl text-primary-container mb-4">Horários de Entrega</h4>
-<div class="flex justify-between items-center group">
-<span class="text-on-surface-variant font-medium">Segunda a Quarta</span>
-<span class="bg-primary-container text-white px-4 py-1 text-xs font-bold">14h00 - 16h00</span>
-</div>
-</div>
-<div class="border-b border-outline-variant/30 pb-6">
-<div class="flex justify-between items-center group">
-<span class="text-on-surface-variant font-medium">Quinta-feira</span>
-<span class="bg-primary-container text-white px-4 py-1 text-xs font-bold">14h00 - 16h00</span>
-</div>
-</div>
-<div class="flex items-center gap-4 text-primary-container">
-<span class="material-symbols-outlined">location_on</span>
-<span class="font-bold uppercase text-xs tracking-widest">Sala da Associação</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- FAQ Section -->
-<section class="py-32 px-8 bg-surface-container-low" id="faq">
-<div class="max-w-4xl mx-auto">
-<div class="text-center mb-20">
-<span class="font-label text-secondary text-xs font-bold uppercase tracking-[0.2em]">Dúvidas</span>
-<h2 class="font-headline text-4xl md:text-5xl text-primary-container mt-4">Perguntas Frequentes</h2>
-</div>
-<div class="space-y-4">
-<!-- FAQ Item 1 -->
-<div class="bg-surface-container-lowest overflow-hidden">
-<button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-surface-bright transition-colors">
-<span class="font-headline text-lg text-primary-container">Quantos convidados posso levar?</span>
-<span class="material-symbols-outlined text-secondary">add</span>
-</button>
-</div>
-<!-- FAQ Item 2 -->
-<div class="bg-surface-container-lowest overflow-hidden">
-<button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-surface-bright transition-colors">
-<span class="font-headline text-lg text-primary-container">Como é feito o pagamento da inscrição?</span>
-<span class="material-symbols-outlined text-secondary">add</span>
-</button>
-</div>
-<!-- FAQ Item 3 -->
-<div class="bg-surface-container-lowest overflow-hidden border-2 border-secondary-fixed-dim/20">
-<button class="w-full px-8 py-6 text-left flex justify-between items-center bg-surface-bright">
-<span class="font-headline text-lg text-primary-container">Quais os prazos limite para inscrição?</span>
-<span class="material-symbols-outlined text-secondary">remove</span>
-</button>
-<div class="px-8 pb-8 text-on-surface-variant leading-relaxed">
-                            As inscrições decorrem até ao dia 15 de Maio. Recomendamos a inscrição antecipada pois os lugares são limitados à capacidade do recinto.
+                    <div class="flex items-start gap-4 p-6 bg-surface-container-low rounded-xl border-l-4 border-secondary-fixed-dim transition-all hover:shadow-lg">
+                        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl" style="font-variation-settings: 'FILL' 1;">info</span>
+                        <div>
+                            <p class="text-sm font-semibold text-primary-container">Atenção!</p>
+                            <p class="text-sm text-on-surface-variant leading-relaxed">Não te esqueças de apresentar o comprovativo de inscrição e o teu cartão de estudante.</p>
                         </div>
-</div>
-<!-- FAQ Item 4 -->
-<div class="bg-surface-container-lowest overflow-hidden">
-<button class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-surface-bright transition-colors">
-<span class="font-headline text-lg text-primary-container">Traje académico é obrigatório?</span>
-<span class="material-symbols-outlined text-secondary">add</span>
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- Contact/Logo Section -->
-<section class="py-24 px-8 bg-primary-container text-white text-center">
-<div class="max-w-7xl mx-auto flex flex-col items-center gap-12">
-<img class="h-24 opacity-80" data-alt="Académica Lusíada Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtiX2-H3uKYbrc2koqzli1sQnkzzX07Ut6HxvZgaHmt9F1NK20MeuZTnXjgsn8aoFi-2Nsbl2MUnyLOCZOwt4I0r9VOnFgAEFt_WQoLHvy3JS9ziwUmR8rZiGcb7EtlFKQKZI3HkLj-7wxefxmYj8Z9VdZI_i_RNOWwiwieV5UeETQF98yAg3nEEqKrQnJPHlOeGXAYAsEKp95L9V3LKl_wAYAQweqjxlclNf1hhUbk3MvRURKXimKvrtcik13lU7Zh0XFKzl0ows"/>
-<div class="space-y-6">
-<h3 class="font-headline text-3xl text-secondary-fixed-dim">Acompanha as novidades</h3>
-<p class="font-body text-white/60">Segue o nosso Instagram para informações em tempo real e fotografias do evento.</p>
-<a class="inline-flex items-center gap-3 text-secondary-fixed-dim border border-secondary-fixed-dim/30 px-8 py-4 hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed transition-all" href="https://instagram.com/ACADEMICALUSIADA">
-<span class="material-symbols-outlined">star</span>
-<span class="font-bold uppercase text-xs tracking-widest">@ACADEMICALUSIADA</span>
-</a>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-[#001B3D] dark:bg-[#001B3D] w-full py-12 px-8 border-t border-white/5">
-<div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
-<div class="text-lg font-serif italic text-[#E9C349]">
+                    </div>
+                </div>
+                <div class="bg-surface-container-lowest p-10 rounded-3xl shadow-2xl shadow-primary-container/5 relative border border-gray-100 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed-dim/10 rounded-full -mr-10 -mt-10"></div>
+                    <div class="relative space-y-10">
+                        <div class="border-b border-outline-variant/30 pb-6">
+                            <h4 class="font-headline text-xl text-primary-container mb-4">Horários de Pagamento</h4>
+                            <div class="flex justify-between items-center group py-2">
+                                <span class="text-on-surface-variant font-medium">Segunda a Quarta</span>
+                                <span class="bg-primary-container text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-md">14h00 - 16h00</span>
+                            </div>
+                        </div>
+                        <div class="border-b border-outline-variant/30 pb-6">
+                            <div class="flex justify-between items-center group py-2">
+                                <span class="text-on-surface-variant font-medium">Quinta-feira</span>
+                                <span class="bg-primary-container text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-md">14h00 - 16h00</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 text-primary-container pt-4">
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl">location_on</span>
+                            <span class="font-bold uppercase text-xs tracking-widest">Sala da Associação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 md:py-32 px-6 md:px-8 bg-surface-container-low" id="faq">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-20">
+                    <span class="font-label text-secondary text-xs font-bold uppercase tracking-[0.2em]">Dúvidas</span>
+                    <h2 class="font-headline text-4xl md:text-5xl text-primary-container mt-4 leading-tight tracking-tight">Perguntas Frequentes</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    
+                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-primary-container pr-4">Posso levar mais do que 4 convidados?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                        </button>
+                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                            Não. O limite está estritamente fixado em **4 convidados por Finalista**, de forma a garantir que todos os finalistas possam ter os familiares presentes.
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl shadow-xl border-2 border-secondary-fixed-dim/20 overflow-hidden">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center bg-surface-bright" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-primary-container pr-4">Como posso realizar o pagamento e confirmar a minha presença?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">remove</span>
+                        </button>
+                        <div class="faq-content px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                            Após preencheres o formulário online, deverás dirigir-te à **Sala da Associação** para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-primary-container pr-4">Inscrição sem convidados é necessária?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                        </button>
+                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                            **Sim.** Todos os **Finalistas** devem estar registados no formulário, mesmo que não levem convidados.
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-primary-container pr-4">Posso participar no evento sem inscrição prévia?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                        </button>
+                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                            **Não.** Por motivos de segurança e controlo de lotação, apenas os **Finalistas** e convidados registados no formulário e com pagamento validado terão acesso ao recinto da Bênção.
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-primary-container pr-4">Qual é o prazo limite para a inscrição e pagamento?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                        </button>
+                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                            O formulário e o respetivo pagamento na Sala da Associação devem ser concluídos até ao dia **30 de Abril**. Após esta data, não haverá qualquer venda de pulseiras ou abertura de novas inscrições, sem exceções.
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-primary-container pr-4">As crianças pagam bilhete?</span>
+                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                        </button>
+                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                            **Crianças até aos 10 anos têm entrada gratuita** e não precisas de as incluir no teu formulário de inscrição.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-6 md:px-8 bg-primary-container text-white text-center border-t border-white/5">
+            <div class="max-w-7xl mx-auto flex flex-col items-center gap-12">
+                <div class="space-y-6">
+                    <h3 class="font-headline text-3xl md:text-4xl text-secondary-fixed-dim leading-tight">Acompanha as novidades</h3>
+                    <p class="font-body text-white/70 max-w-xl mx-auto font-light leading-relaxed">Qualquer dúvida que tenhas entra em contacto connosco. Segue o nosso Instagram para informações em tempo real e fotografias do evento.</p>
+                    <a class="inline-flex items-center gap-3 text-secondary-fixed-dim border border-secondary-fixed-dim/30 px-8 py-4 rounded-full font-bold uppercase text-xs tracking-[0.2em] transition-all hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed shadow-lg" href="https://instagram.com/ACADEMICALUSIADA" target="_blank">
+                        <span class="material-symbols-outlined">star</span>
+                        <span>@ACADEMICALUSIADA</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#001B3D] w-full py-16 px-6 md:px-8 border-t border-white/5">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto text-center md:text-left">
+            <div class="text-xl md:text-2xl font-headline font-bold italic text-secondary-fixed-dim tracking-tight">
                 Académica Lusíada
             </div>
-<p class="font-sans Manrope text-sm text-white/60">
+            <p class="font-sans text-sm text-white/50 max-w-md">
                 © 2024 Académica Lusíada. Todos os direitos reservados.
             </p>
-<div class="flex gap-8">
-<a class="text-white/60 hover:text-[#E9C349] transition-colors text-sm uppercase tracking-tighter" href="#">Contactos</a>
-<a class="text-white/60 hover:text-[#E9C349] transition-colors text-sm uppercase tracking-tighter" href="#">Privacidade</a>
-</div>
-</div>
-</footer>
-</body></html>
+            <div class="flex gap-6">
+                <a class="text-white/50 hover:text-secondary-fixed-dim transition-colors text-xs uppercase tracking-widest" href="#hero">Início</a>
+                <a class="text-white/50 hover:text-secondary-fixed-dim transition-colors text-xs uppercase tracking-widest" href="#pulseiras">Logística</a>
+                <a class="text-white/50 hover:text-secondary-fixed-dim transition-colors text-xs uppercase tracking-widest" href="#faq">FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(button) {
+            // Encontrar o conteúdo do FAQ neste item
+            const content = button.nextElementSibling;
+            // Encontrar o ícone de 'add' ou 'remove'
+            const icon = button.querySelector('.material-symbols-outlined');
+            
+            // Alternar a classe 'hidden' para mostrar/esconder
+            content.classList.toggle('hidden');
+            
+            // Alternar o ícone e o estilo "active" (Design do stitch)
+            if (content.classList.contains('hidden')) {
+                icon.textContent = 'add';
+                button.parentElement.classList.remove('border-2', 'border-secondary-fixed-dim/20');
+                button.classList.remove('bg-surface-bright');
+            } else {
+                icon.textContent = 'remove';
+                button.parentElement.classList.add('border-2', 'border-secondary-fixed-dim/20');
+                button.classList.add('bg-surface-bright');
+            }
+        }
+    </script>
+
+</body>
+</html>
