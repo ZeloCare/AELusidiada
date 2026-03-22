@@ -205,17 +205,17 @@
                 <h3 class="font-label text-secondary-fixed-dim text-sm font-bold uppercase tracking-[0.4em] mb-12 animate-pulse-glow">A Contagem Começou</h3>
                 <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12">
                     <div class="text-center glass-card p-8 rounded-3xl min-w-[140px] neon-border transform hover:-translate-y-2 transition-all duration-300">
-                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">14</span>
+                        <span id="countdown-days" class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">14</span>
                         <span class="font-label text-white/60 text-xs uppercase tracking-widest">Dias</span>
                     </div>
                     <div class="h-16 w-px bg-secondary-fixed-dim/30 hidden md:block"></div>
                     <div class="text-center glass-card p-8 rounded-3xl min-w-[140px] neon-border transform hover:-translate-y-2 transition-all duration-300">
-                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">08</span>
+                        <span id="countdown-hours" class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">08</span>
                         <span class="font-label text-white/60 text-xs uppercase tracking-widest">Horas</span>
                     </div>
                     <div class="h-16 w-px bg-secondary-fixed-dim/30 hidden md:block"></div>
                     <div class="text-center glass-card p-8 rounded-3xl min-w-[140px] neon-border transform hover:-translate-y-2 transition-all duration-300">
-                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">45</span>
+                        <span id="countdown-minutes" class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">45</span>
                         <span class="font-label text-white/60 text-xs uppercase tracking-widest">Minutos</span>
                     </div>
                 </div>
@@ -370,6 +370,30 @@
     </footer>
 
     <script>
+        // Data do evento: 23 de Maio de 2024 às 15:00
+        const countDownDate = new Date("2024-05-23T15:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown-days").innerHTML = "00";
+                document.getElementById("countdown-hours").innerHTML = "00";
+                document.getElementById("countdown-minutes").innerHTML = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("countdown-days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("countdown-hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("countdown-minutes").innerHTML = minutes.toString().padStart(2, '0');
+        }, 1000);
+
         function toggleFaq(button) {
             // Encontrar o conteúdo do FAQ neste item
             const content = button.nextElementSibling;
