@@ -69,6 +69,32 @@
                         "label": ["Manrope", "sans-serif"]
                     },
                     borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blob': 'blob 7s infinite',
+                        'shine': 'shine 1.5s ease-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 1, filter: 'drop-shadow(0 0 15px rgba(233, 195, 73, 0.6))' },
+                            '50%': { opacity: .7, filter: 'drop-shadow(0 0 2px rgba(233, 195, 73, 0.2))' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
+                        }
+                    }
                 },
             },
         }
@@ -79,11 +105,41 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         .bg-academic-overlay {
-            background: linear-gradient(to bottom, rgba(0, 27, 61, 0.85), rgba(0, 27, 61, 0.95));
+            background: linear-gradient(135deg, rgba(0, 27, 61, 0.95), rgba(0, 10, 20, 0.98));
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-panel {
+            background: linear-gradient(145deg, rgba(0, 27, 61, 0.6), rgba(0, 10, 25, 0.8));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(233, 195, 73, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #ffe087, #e9c349, #ffe087);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+        .neon-border {
+            box-shadow: 0 0 10px rgba(233, 195, 73, 0.3), inset 0 0 10px rgba(233, 195, 73, 0.1);
+            border: 1px solid rgba(233, 195, 73, 0.5);
+        }
+        .animated-bg {
+            background: linear-gradient(-45deg, #001b3d, #000000, #1a0b2e, #001b3d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         /* Garantir scroll suave ao clicar nos links do menu */
         html {
@@ -110,163 +166,170 @@
     </nav>
 
     <main>
-        <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-primary-container">
-            <div class="absolute inset-0 z-0">
-                <img class="w-full h-full object-cover opacity-30" alt="Arquitetura universitária elegante" src="images/logo.png"/>
-                <div class="absolute inset-0 bg-academic-overlay"></div>
+        <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden animated-bg">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <div class="absolute top-0 -left-4 w-72 h-72 bg-secondary-fixed-dim rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob"></div>
+                <div class="absolute top-0 -right-4 w-72 h-72 bg-[#ffdbcd] rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob [animation-delay:2000ms]"></div>
+                <div class="absolute -bottom-8 left-20 w-72 h-72 bg-[#d6e3ff] rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob [animation-delay:4000ms]"></div>
+                <img class="w-full h-full object-cover opacity-20" alt="Arquitetura universitária elegante" src="images/logo.png"/>
+                <div class="absolute inset-0 bg-academic-overlay backdrop-blur-[2px]"></div>
             </div>
             <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-8 text-center py-16">
-                <div class="mb-12 flex justify-center">
-                    <img class="h-32 md:h-40" alt="Logo Académica Lusíada em ouro" src="images/logo.png"/>
-                    </div>
-                <h1 class="font-headline text-5xl md:text-7xl text-secondary-fixed-dim mb-8 leading-tight tracking-tight">
+                <div class="mb-12 flex justify-center animate-float">
+                    <img class="h-32 md:h-40 filter drop-shadow-[0_0_15px_rgba(233,195,73,0.5)]" alt="Logo Académica Lusíada em ouro" src="images/logo.png"/>
+                </div>
+                <h1 class="font-headline text-5xl md:text-8xl mb-8 leading-tight tracking-tight text-gradient font-bold">
                     Bênção de Finalistas
                 </h1>
-                <p class="font-body text-xl md:text-2xl text-on-primary max-w-3xl mx-auto mb-16 font-light leading-relaxed tracking-wide">
-                    Parabéns, Finalista! <br class="hidden sm:block"> Foram anos de esforço, noitadas de estudo e memórias para a vida. Celebra este momento histórico com a tua família e colegas.
+                <p class="font-body text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-16 font-light leading-relaxed tracking-wide drop-shadow-lg">
+                    Parabéns, Finalista! <br class="hidden sm:block"> Celebra este momento histórico com um evento de prestígio, pensado para ti, a tua família e colegas.
                 </p>
                 <div class="flex flex-col md:flex-row gap-6 justify-center">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" target="_blank" class="bg-secondary-fixed-dim text-on-secondary-fixed px-12 py-5 rounded-full text-sm font-bold uppercase tracking-[0.2em] transition-all hover:brightness-110 active:scale-95 shadow-2xl shadow-secondary-fixed-dim/20">
-                        Faz já a tua inscrição
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" target="_blank" class="relative inline-flex group items-center justify-center px-12 py-5 font-bold uppercase tracking-[0.2em] text-[#231a00] bg-secondary-fixed-dim rounded-full overflow-hidden shadow-[0_0_40px_-10px_rgba(233,195,73,0.8)] transition-all hover:scale-105 active:scale-95">
+                        <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                        <span class="relative">Garante o teu lugar</span>
                     </a>
-                    <a href="#pulseiras" class="border border-white/20 text-white px-10 py-5 rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-white/5 transition-all">
-                        Saber mais
+                    <a href="#pulseiras" class="relative inline-flex group items-center justify-center px-10 py-5 font-bold uppercase tracking-[0.2em] text-white border border-secondary-fixed-dim/40 rounded-full overflow-hidden glass-card transition-all hover:border-secondary-fixed-dim/80 hover:bg-white/10 hover:shadow-[0_0_20px_-5px_rgba(233,195,73,0.3)]">
+                        <span class="relative">Descobre mais</span>
                     </a>
                 </div>
             </div>
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 animate-bounce">
-                <span class="material-symbols-outlined" style="font-size: 32px;">expand_more</span>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-secondary-fixed-dim/60 animate-bounce cursor-pointer hover:text-secondary-fixed-dim transition-colors">
+                <span class="material-symbols-outlined" style="font-size: 36px;">expand_more</span>
             </div>
         </section>
 
-        <section class="bg-primary-container py-16 px-6 md:px-8 relative overflow-hidden border-t border-white/5">
-            <div class="max-w-7xl mx-auto text-center">
-                <h3 class="font-label text-secondary-fixed-dim text-xs font-bold uppercase tracking-[0.3em] mb-12">Contagem Decrescente para a Cerimónia</h3>
-                <div class="flex flex-wrap justify-center items-center gap-6 md:gap-16">
-                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
-                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">14</span>
-                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Dias</span>
+        <section class="bg-[#000a14] py-20 px-6 md:px-8 relative overflow-hidden border-t border-secondary-fixed-dim/10">
+            <div class="absolute inset-0 bg-[url('images/logo.png')] opacity-5 bg-center bg-no-repeat bg-cover mix-blend-overlay"></div>
+            <div class="max-w-7xl mx-auto text-center relative z-10">
+                <h3 class="font-label text-secondary-fixed-dim text-sm font-bold uppercase tracking-[0.4em] mb-12 animate-pulse-glow">A Contagem Começou</h3>
+                <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12">
+                    <div class="text-center glass-card p-8 rounded-3xl min-w-[140px] neon-border transform hover:-translate-y-2 transition-all duration-300">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">14</span>
+                        <span class="font-label text-white/60 text-xs uppercase tracking-widest">Dias</span>
                     </div>
-                    <div class="h-16 w-px bg-white/10 hidden md:block"></div>
-                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
-                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">08</span>
-                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Horas</span>
+                    <div class="h-16 w-px bg-secondary-fixed-dim/30 hidden md:block"></div>
+                    <div class="text-center glass-card p-8 rounded-3xl min-w-[140px] neon-border transform hover:-translate-y-2 transition-all duration-300">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">08</span>
+                        <span class="font-label text-white/60 text-xs uppercase tracking-widest">Horas</span>
                     </div>
-                    <div class="h-16 w-px bg-white/10 hidden md:block"></div>
-                    <div class="text-center bg-white/5 p-6 rounded-2xl min-w-[120px]">
-                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2">45</span>
-                        <span class="font-label text-white/40 text-xs uppercase tracking-widest">Minutos</span>
+                    <div class="h-16 w-px bg-secondary-fixed-dim/30 hidden md:block"></div>
+                    <div class="text-center glass-card p-8 rounded-3xl min-w-[140px] neon-border transform hover:-translate-y-2 transition-all duration-300">
+                        <span class="block font-headline text-6xl md:text-7xl text-white mb-2 text-gradient">45</span>
+                        <span class="font-label text-white/60 text-xs uppercase tracking-widest">Minutos</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 md:py-32 px-6 md:px-8 bg-surface" id="pulseiras">
-            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+        <section class="py-24 md:py-32 px-6 md:px-8 bg-[#001b3d] relative" id="pulseiras">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#000a14] to-[#001b3d] z-0"></div>
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center relative z-10">
                 <div class="space-y-8">
-                    <span class="font-label text-secondary text-xs font-bold uppercase tracking-[0.2em]">Logística Obrigatória</span>
-                    <h2 class="font-headline text-4xl md:text-5xl text-primary-container leading-tight tracking-tight">Levantamento de Pulseiras e Acessos</h2>
-                    <p class="text-on-surface-variant text-lg leading-relaxed font-light">
+                    <span class="font-label text-secondary-fixed-dim text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-secondary-fixed-dim/20 bg-secondary-fixed-dim/10">Logística Obrigatória</span>
+                    <h2 class="font-headline text-4xl md:text-6xl text-white leading-tight tracking-tight">Levantamento de <span class="text-gradient">Pulseiras</span></h2>
+                    <p class="text-white/70 text-lg leading-relaxed font-light">
                         Após preencheres o formulário online, deves dirigir-te à Sala da Associação para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
                     </p>
-                    <div class="flex items-start gap-4 p-6 bg-surface-container-low rounded-xl border-l-4 border-secondary-fixed-dim transition-all hover:shadow-lg">
-                        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl" style="font-variation-settings: 'FILL' 1;">info</span>
+                    <div class="flex items-start gap-4 p-6 glass-panel rounded-2xl border-l-4 border-secondary-fixed-dim transition-all hover:scale-105 duration-300">
+                        <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl animate-pulse-glow" style="font-variation-settings: 'FILL' 1;">info</span>
                         <div>
-                            <p class="text-sm font-semibold text-primary-container">Atenção!</p>
-                            <p class="text-sm text-on-surface-variant leading-relaxed">Não te esqueças de apresentar o comprovativo de inscrição e o teu cartão de estudante.</p>
+                            <p class="text-sm font-semibold text-white">Atenção!</p>
+                            <p class="text-sm text-white/60 leading-relaxed mt-1">Não te esqueças de apresentar o comprovativo de inscrição e o teu cartão de estudante.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-surface-container-lowest p-10 rounded-3xl shadow-2xl shadow-primary-container/5 relative border border-gray-100 overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-secondary-fixed-dim/10 rounded-full -mr-10 -mt-10"></div>
+                <div class="glass-panel p-10 rounded-[2rem] relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-secondary-fixed-dim/20 rounded-full mix-blend-screen filter blur-3xl -mr-20 -mt-20 group-hover:bg-secondary-fixed-dim/30 transition-all duration-500"></div>
                     <div class="relative space-y-10">
-                        <div class="border-b border-outline-variant/30 pb-6">
-                            <h4 class="font-headline text-xl text-primary-container mb-4">Horários de Pagamento</h4>
-                            <div class="flex justify-between items-center group py-2">
-                                <span class="text-on-surface-variant font-medium">Segunda a Quarta</span>
-                                <span class="bg-primary-container text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-md">14h00 - 16h00</span>
+                        <div class="border-b border-white/10 pb-6">
+                            <h4 class="font-headline text-2xl text-white mb-6">Horários de Pagamento</h4>
+                            <div class="flex justify-between items-center py-3 group/item hover:bg-white/5 px-4 rounded-lg transition-colors">
+                                <span class="text-white/80 font-medium">Segunda a Quarta</span>
+                                <span class="bg-secondary-fixed-dim/20 text-secondary-fixed-dim border border-secondary-fixed-dim/30 px-5 py-1.5 rounded-full text-xs font-bold shadow-[0_0_10px_rgba(233,195,73,0.2)]">14h00 - 16h00</span>
                             </div>
                         </div>
-                        <div class="border-b border-outline-variant/30 pb-6">
-                            <div class="flex justify-between items-center group py-2">
-                                <span class="text-on-surface-variant font-medium">Quinta-feira</span>
-                                <span class="bg-primary-container text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-md">14h00 - 16h00</span>
+                        <div class="border-b border-white/10 pb-6">
+                            <div class="flex justify-between items-center py-3 group/item hover:bg-white/5 px-4 rounded-lg transition-colors">
+                                <span class="text-white/80 font-medium">Quinta-feira</span>
+                                <span class="bg-secondary-fixed-dim/20 text-secondary-fixed-dim border border-secondary-fixed-dim/30 px-5 py-1.5 rounded-full text-xs font-bold shadow-[0_0_10px_rgba(233,195,73,0.2)]">14h00 - 16h00</span>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4 text-primary-container pt-4">
-                            <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl">location_on</span>
-                            <span class="font-bold uppercase text-xs tracking-widest">Sala da Associação</span>
+                        <div class="flex items-center gap-4 text-white pt-4 px-4">
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-3xl drop-shadow-[0_0_8px_rgba(233,195,73,0.8)]">location_on</span>
+                            <span class="font-bold uppercase text-xs tracking-[0.2em] text-white/90">Sala da Associação</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 md:py-32 px-6 md:px-8 bg-surface-container-low" id="faq">
-            <div class="max-w-4xl mx-auto">
+        <section class="py-24 md:py-32 px-6 md:px-8 bg-[#000a14] relative border-t border-white/5" id="faq">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(233,195,73,0.05)_0%,transparent_70%)]"></div>
+            <div class="max-w-4xl mx-auto relative z-10">
                 <div class="text-center mb-20">
-                    <span class="font-label text-secondary text-xs font-bold uppercase tracking-[0.2em]">Dúvidas</span>
-                    <h2 class="font-headline text-4xl md:text-5xl text-primary-container mt-4 leading-tight tracking-tight">Perguntas Frequentes</h2>
+                    <span class="font-label text-secondary-fixed-dim text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-secondary-fixed-dim/20 bg-secondary-fixed-dim/5">Dúvidas</span>
+                    <h2 class="font-headline text-4xl md:text-5xl text-white mt-6 leading-tight tracking-tight">Perguntas Frequentes</h2>
                 </div>
                 
-                <div class="space-y-4">
+                <div class="space-y-6">
                     
-                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
-                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
-                            <span class="font-headline text-lg text-primary-container pr-4">Posso levar mais do que 4 convidados?</span>
-                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all hover:border-secondary-fixed-dim/50 group">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-white pr-4 group-hover:text-secondary-fixed-dim transition-colors">Posso levar mais do que 4 convidados?</span>
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
-                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                        <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
                             Não. O limite está estritamente fixado em **4 convidados por Finalista**, de forma a garantir que todos os finalistas possam ter os familiares presentes.
                         </div>
                     </div>
 
-                    <div class="bg-surface-container-lowest rounded-xl shadow-xl border-2 border-secondary-fixed-dim/20 overflow-hidden">
-                        <button class="w-full px-8 py-6 text-left flex justify-between items-center bg-surface-bright" onclick="toggleFaq(this)">
-                            <span class="font-headline text-lg text-primary-container pr-4">Como posso realizar o pagamento e confirmar a minha presença?</span>
-                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">remove</span>
+                    <div class="glass-panel rounded-2xl overflow-hidden border-secondary-fixed-dim/40 shadow-[0_0_20px_rgba(233,195,73,0.1)] group">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center bg-white/5" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-secondary-fixed-dim pr-4">Como posso realizar o pagamento e confirmar a minha presença?</span>
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">remove</span>
                         </button>
-                        <div class="faq-content px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                        <div class="faq-content px-8 pb-8 text-white/60 leading-relaxed font-light mt-2">
                             Após preencheres o formulário online, deverás dirigir-te à **Sala da Associação** para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
                         </div>
                     </div>
 
-                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
-                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
-                            <span class="font-headline text-lg text-primary-container pr-4">Inscrição sem convidados é necessária?</span>
-                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all hover:border-secondary-fixed-dim/50 group">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-white pr-4 group-hover:text-secondary-fixed-dim transition-colors">Inscrição sem convidados é necessária?</span>
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
-                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                        <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
                             **Sim.** Todos os **Finalistas** devem estar registados no formulário, mesmo que não levem convidados.
                         </div>
                     </div>
 
-                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
-                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
-                            <span class="font-headline text-lg text-primary-container pr-4">Posso participar no evento sem inscrição prévia?</span>
-                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all hover:border-secondary-fixed-dim/50 group">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-white pr-4 group-hover:text-secondary-fixed-dim transition-colors">Posso participar no evento sem inscrição prévia?</span>
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
-                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                        <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
                             **Não.** Por motivos de segurança e controlo de lotação, apenas os **Finalistas** e convidados registados no formulário e com pagamento validado terão acesso ao recinto da Bênção.
                         </div>
                     </div>
 
-                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
-                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
-                            <span class="font-headline text-lg text-primary-container pr-4">Qual é o prazo limite para a inscrição e pagamento?</span>
-                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all hover:border-secondary-fixed-dim/50 group">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-white pr-4 group-hover:text-secondary-fixed-dim transition-colors">Qual é o prazo limite para a inscrição e pagamento?</span>
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
-                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                        <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
                             O formulário e o respetivo pagamento na Sala da Associação devem ser concluídos até ao dia **30 de Abril**. Após esta data, não haverá qualquer venda de pulseiras ou abertura de novas inscrições, sem exceções.
                         </div>
                     </div>
 
-                    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden transition-all hover:bg-surface-bright">
-                        <button class="w-full px-8 py-6 text-left flex justify-between items-center group" onclick="toggleFaq(this)">
-                            <span class="font-headline text-lg text-primary-container pr-4">As crianças pagam bilhete?</span>
-                            <span class="material-symbols-outlined text-secondary text-2xl group-hover:rotate-45 transition-transform">add</span>
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all hover:border-secondary-fixed-dim/50 group">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-white pr-4 group-hover:text-secondary-fixed-dim transition-colors">As crianças pagam bilhete?</span>
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
-                        <div class="faq-content hidden px-8 pb-8 text-on-surface-variant leading-relaxed font-light">
+                        <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
                             **Crianças até aos 10 anos têm entrada gratuita** e não precisas de as incluir no teu formulário de inscrição.
                         </div>
                     </div>
@@ -275,12 +338,13 @@
             </div>
         </section>
 
-        <section class="py-24 px-6 md:px-8 bg-primary-container text-white text-center border-t border-white/5">
-            <div class="max-w-7xl mx-auto flex flex-col items-center gap-12">
+        <section class="py-24 px-6 md:px-8 bg-[#001b3d] text-white text-center border-t border-secondary-fixed-dim/10 relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-px bg-gradient-to-r from-transparent via-secondary-fixed-dim to-transparent opacity-50"></div>
+            <div class="max-w-7xl mx-auto flex flex-col items-center gap-12 relative z-10">
                 <div class="space-y-6">
-                    <h3 class="font-headline text-3xl md:text-4xl text-secondary-fixed-dim leading-tight">Acompanha as novidades</h3>
-                    <p class="font-body text-white/70 max-w-xl mx-auto font-light leading-relaxed">Qualquer dúvida que tenhas entra em contacto connosco. Segue o nosso Instagram para informações em tempo real e fotografias do evento.</p>
-                    <a class="inline-flex items-center gap-3 text-secondary-fixed-dim border border-secondary-fixed-dim/30 px-8 py-4 rounded-full font-bold uppercase text-xs tracking-[0.2em] transition-all hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed shadow-lg" href="https://instagram.com/ACADEMICALUSIADA" target="_blank">
+                    <h3 class="font-headline text-3xl md:text-5xl text-white leading-tight">Acompanha as <span class="text-gradient">novidades</span></h3>
+                    <p class="font-body text-white/70 max-w-xl mx-auto font-light leading-relaxed text-lg">Qualquer dúvida que tenhas entra em contacto connosco. Segue o nosso Instagram para informações em tempo real e fotografias do evento.</p>
+                    <a class="inline-flex items-center gap-3 text-[#000a14] bg-secondary-fixed-dim px-10 py-5 rounded-full font-bold uppercase text-xs tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(233,195,73,0.4)] mt-4" href="https://instagram.com/ACADEMICALUSIADA" target="_blank">
                         <span class="material-symbols-outlined">star</span>
                         <span>@ACADEMICALUSIADA</span>
                     </a>
