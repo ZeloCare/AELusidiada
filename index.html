@@ -323,17 +323,17 @@
                             <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
                         <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
-                            Não. O limite está estritamente fixado em **4 convidados por Finalista**, de forma a garantir que todos os finalistas possam ter os familiares presentes.
+                            Não. O limite está estritamente fixado em <strong>4 convidados por Finalista</strong>, de forma a garantir que todos os finalistas possam ter os familiares presentes.
                         </div>
                     </div>
 
-                    <div class="glass-panel rounded-2xl overflow-hidden border-secondary-fixed-dim/40 shadow-[0_0_20px_rgba(233,195,73,0.1)] group">
-                        <button class="w-full px-8 py-6 text-left flex justify-between items-center bg-white/5" onclick="toggleFaq(this)">
-                            <span class="font-headline text-lg text-secondary-fixed-dim pr-4">Como posso realizar o pagamento e confirmar a minha presença?</span>
-                            <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">remove</span>
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all hover:border-secondary-fixed-dim/50 group">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                            <span class="font-headline text-lg text-white pr-4 group-hover:text-secondary-fixed-dim transition-colors">Como posso realizar o pagamento e confirmar a minha presença?</span>
+                            <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
-                        <div class="faq-content px-8 pb-8 text-white/60 leading-relaxed font-light mt-2">
-                            Após preencheres o formulário online, deverás dirigir-te à **Sala da Associação** para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
+                        <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
+                            Após preencheres o formulário online, deverás dirigir-te à <strong>Sala da Associação</strong> para efetuar o pagamento. É nesse momento que a tua inscrição é validada e poderás levantar as pulseiras de acesso para ti e para os teus convidados.
                         </div>
                     </div>
 
@@ -343,7 +343,7 @@
                             <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
                         <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
-                            **Sim.** Todos os **Finalistas** devem estar registados no formulário, mesmo que não levem convidados.
+                            <strong>Sim.</strong> Todos os <strong>Finalistas</strong> devem estar registados no formulário, mesmo que não levem convidados.
                         </div>
                     </div>
 
@@ -353,7 +353,7 @@
                             <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
                         <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
-                            **Não.** Por motivos de segurança e controlo de lotação, apenas os **Finalistas** e convidados registados no formulário e com pagamento validado terão acesso ao recinto da Bênção.
+                            <strong>Não.</strong> Por motivos de segurança e controlo de lotação, apenas os <strong>Finalistas</strong> e convidados registados no formulário e com pagamento validado terão acesso ao recinto da Bênção.
                         </div>
                     </div>
 
@@ -363,7 +363,7 @@
                             <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
                         <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
-                            O formulário e o respetivo pagamento na Sala da Associação devem ser concluídos até ao dia **30 de Abril**. Após esta data, não haverá qualquer venda de pulseiras ou abertura de novas inscrições, sem exceções.
+                            O formulário e o respetivo pagamento na Sala da Associação devem ser concluídos até ao dia <strong>30 de Abril</strong>. Após esta data, não haverá qualquer venda de pulseiras ou abertura de novas inscrições, sem exceções.
                         </div>
                     </div>
 
@@ -373,7 +373,7 @@
                             <span class="material-symbols-outlined text-secondary-fixed-dim text-2xl transition-transform duration-300">add</span>
                         </button>
                         <div class="faq-content hidden px-8 pb-8 text-white/60 leading-relaxed font-light">
-                            **Crianças até aos 10 anos têm entrada gratuita** e não precisas de as incluir no teu formulário de inscrição.
+                            <strong>Crianças até aos 10 anos têm entrada gratuita</strong> e não precisas de as incluir no teu formulário de inscrição.
                         </div>
                     </div>
 
@@ -445,6 +445,8 @@
             const content = button.nextElementSibling;
             // Encontrar o ícone de 'add' ou 'remove'
             const icon = button.querySelector('.material-symbols-outlined');
+            // Encontrar o texto da pergunta
+            const textSpan = button.querySelector('span.font-headline');
             
             // Alternar a classe 'hidden' para mostrar/esconder
             content.classList.toggle('hidden');
@@ -453,11 +455,15 @@
             if (content.classList.contains('hidden')) {
                 icon.textContent = 'add';
                 button.parentElement.classList.remove('border-2', 'border-secondary-fixed-dim/20');
-                button.classList.remove('bg-surface-bright');
+                button.classList.remove('bg-white/5');
+                textSpan.classList.remove('text-secondary-fixed-dim');
+                textSpan.classList.add('text-white');
             } else {
                 icon.textContent = 'remove';
                 button.parentElement.classList.add('border-2', 'border-secondary-fixed-dim/20');
-                button.classList.add('bg-surface-bright');
+                button.classList.add('bg-white/5');
+                textSpan.classList.remove('text-white');
+                textSpan.classList.add('text-secondary-fixed-dim');
             }
         }
     </script>
