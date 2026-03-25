@@ -146,9 +146,31 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Transição ao navegar para o formulário */
+        .page-transition {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 260ms ease, transform 260ms ease;
+            will-change: opacity, transform;
+        }
+        .page-transition.is-leaving {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .page-transition {
+                transition: none;
+                transform: none;
+            }
+            .page-transition.is-leaving {
+                opacity: 0;
+                transform: none;
+            }
+        }
     </style>
 </head>
-<body class="bg-[#001B3D] font-body text-white">
+<body class="bg-[#001B3D] font-body text-white page-transition">
 
     <nav class="fixed top-0 w-full z-50 bg-[#001B3D] backdrop-blur-md bg-opacity-80 border-b border-white/10 shadow-xl shadow-[#001B3D]/20">
         <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
@@ -160,7 +182,7 @@
                 <a class="text-white/80 hover:text-white transition-colors font-sans tracking-wide uppercase text-xs" href="#pulseiras">Logística</a>
                 <a class="text-white/80 hover:text-white transition-colors font-sans tracking-wide uppercase text-xs" href="#faq">FAQ</a>
             </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" target="_blank" class="bg-[#E9C349] text-[#231a00] px-6 py-2.5 rounded-full font-sans font-bold tracking-wide uppercase text-xs transition-transform active:scale-90">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUdxI8rNgWZU17FcY4c2O6IFltXSJdUQEM6L4Gt8ET_9qWlg/viewform" data-form-transition="true" class="bg-[#E9C349] text-[#231a00] px-6 py-2.5 rounded-full font-sans font-bold tracking-wide uppercase text-xs transition-transform active:scale-90">
                 Inscreve-te
             </a>
         </div>
@@ -186,7 +208,7 @@
                     Parabéns, Finalista! <br class="hidden sm:block"> Celebra este momento histórico com um evento de prestígio, pensado para ti, a tua família e colegas.
                 </p>
                 <div class="flex flex-col md:flex-row gap-6 justify-center">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScvFxQd2rgrm3VGAK7yB1YCv24YpFKB2oyKSAozMzNq7QBMqw/viewform?pli=1" target="_blank" class="relative inline-flex group items-center justify-center px-12 py-5 font-bold uppercase tracking-[0.2em] text-[#231a00] bg-secondary-fixed-dim rounded-full overflow-hidden shadow-[0_0_40px_-10px_rgba(233,195,73,0.8)] transition-all hover:scale-105 active:scale-95">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUdxI8rNgWZU17FcY4c2O6IFltXSJdUQEM6L4Gt8ET_9qWlg/viewform" data-form-transition="true" class="relative inline-flex group items-center justify-center px-12 py-5 font-bold uppercase tracking-[0.2em] text-[#231a00] bg-secondary-fixed-dim rounded-full overflow-hidden shadow-[0_0_40px_-10px_rgba(233,195,73,0.8)] transition-all hover:scale-105 active:scale-95">
                         <span class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
                         <span class="relative">Garante o teu lugar</span>
                     </a>
@@ -469,6 +491,26 @@
                 textSpan.classList.add('text-secondary-fixed-dim');
             }
         }
+
+        // Animação de transição antes de ir para o Google Forms
+        document.querySelectorAll('a[data-form-transition="true"]').forEach((link) => {
+            link.addEventListener('click', (event) => {
+                if (event.defaultPrevented) return;
+
+                // Respeitar abrir em novo separador (cmd/ctrl-click, etc.)
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+                const href = link.getAttribute('href');
+                if (!href) return;
+
+                event.preventDefault();
+                document.body.classList.add('is-leaving');
+
+                window.setTimeout(() => {
+                    window.location.assign(href);
+                }, 260);
+            });
+        });
     </script>
 
 </body>
