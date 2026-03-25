@@ -197,7 +197,9 @@
         }
     </style>
 </head>
-<body class="bg-[#001B3D] font-body text-white page-transition">
+<body class="bg-[#001B3D] font-body text-white">
+
+    <div id="site-content" class="page-transition">
 
     <nav class="fixed top-0 w-full z-50 bg-[#001B3D] backdrop-blur-md bg-opacity-80 border-b border-white/10 shadow-xl shadow-[#001B3D]/20">
         <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
@@ -448,21 +450,6 @@
         </section>
     </main>
 
-    <div id="transition-overlay" class="transition-overlay" aria-hidden="true">
-        <div class="glass-panel neon-border rounded-[2rem] px-10 py-12 text-center max-w-xl w-full">
-            <div class="flex justify-center mb-8">
-                <img class="h-24 md:h-28 animate-pulse-glow filter drop-shadow-[0_0_15px_rgba(233,195,73,0.6)]" alt="Logo Académica Lusíada" src="images/logo.png"/>
-            </div>
-            <p class="font-label text-secondary-fixed-dim text-xs font-bold uppercase tracking-[0.4em] mb-4">Finalista</p>
-            <p class="font-headline text-2xl md:text-3xl text-white leading-snug">
-                O teu momento chegou — celebra-o com orgulho.
-            </p>
-            <p class="mt-4 text-white/60 font-light">
-                A abrir a inscrição…
-            </p>
-        </div>
-    </div>
-
     <footer class="bg-[#001B3D] w-full py-16 px-6 md:px-8 border-t border-white/5">
         <div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto text-center md:text-left">
             <div class="text-xl md:text-2xl font-headline font-bold italic text-secondary-fixed-dim tracking-tight">
@@ -478,6 +465,21 @@
             </div>
         </div>
     </footer>
+
+    </div>
+
+    <div id="transition-overlay" class="transition-overlay" aria-hidden="true">
+        <div class="glass-panel neon-border rounded-[2rem] px-10 py-12 text-center max-w-xl w-full">
+            <div class="flex justify-center mb-8">
+                <img class="h-24 md:h-28 animate-pulse-glow filter drop-shadow-[0_0_15px_rgba(233,195,73,0.6)]" alt="Logo Académica Lusíada" src="images/logo.png"/>
+            </div>
+            <p class="font-label text-secondary-fixed-dim text-xs font-bold uppercase tracking-[0.4em] mb-4">Finalista</p>
+            <p class="font-headline text-2xl md:text-3xl text-white leading-snug">
+                O teu momento chegou — celebra-o com orgulho.
+            </p>
+            <p class="mt-4 text-white/60 font-light">A abrir a inscrição…</p>
+        </div>
+    </div>
 
     <script>
         // Data do evento: 23 de Maio de 2024 às 15:00
@@ -536,6 +538,7 @@
 
         // Animação de transição antes de ir para o Google Forms (com overlay 2s)
         const TRANSITION_TOTAL_MS = 2000;
+        const siteContent = document.getElementById('site-content');
         const transitionOverlay = document.getElementById('transition-overlay');
         let isTransitioningToForm = false;
 
@@ -557,7 +560,7 @@
 
             // Mantém o efeito já existente e adiciona overlay com mensagem
             showTransitionOverlay();
-            document.body.classList.add('is-leaving');
+            if (siteContent) siteContent.classList.add('is-leaving');
 
             window.setTimeout(() => {
                 window.location.assign(href);
@@ -579,11 +582,16 @@
             });
         });
 
-        // Fix: ao voltar atrás (bfcache), pode ficar preso em "is-leaving" e/ou overlay visível.
-        window.addEventListener('pageshow', () => {
-            document.body.classList.remove('is-leaving');
+        function resetTransitionState() {
+            if (siteContent) siteContent.classList.remove('is-leaving');
             isTransitioningToForm = false;
             hideTransitionOverlay();
+        }
+
+        // Fix: ao voltar atrás (bfcache), pode ficar preso em "is-leaving" e/ou overlay visível.
+        window.addEventListener('pageshow', resetTransitionState);
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') resetTransitionState();
         });
     </script>
 
